@@ -1,14 +1,15 @@
 import { Card } from '@heroui/react';
 import React from 'react';
+import { cn } from '../../lib/utils';
 
 type MaterialCardProps = React.HTMLAttributes<HTMLDivElement> & {
     label: string;
 };
 
-const MaterialCard: React.FC<MaterialCardProps> = ({ label, ...props }) => {
+const MaterialCard: React.FC<MaterialCardProps> = ({ label, className, ...props }) => {
     return (
-        <Card {...props} className='w-[100px] aspect-square' variant='tertiary'>
-            <p className='text-lg font-semibold'>{label}</p>
+        <Card {...props} className={cn('aspect-square w-24 p-3', className)} variant='tertiary'>
+            <p className={cn('text-center text-sm font-semibold')}>{label}</p>
         </Card>
     );
 };
