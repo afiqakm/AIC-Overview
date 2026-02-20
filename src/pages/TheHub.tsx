@@ -1,18 +1,15 @@
-import InputOutputLane from '../components/molecules/InputOutputLane';
-import { cn } from '../lib/utils';
+import Pipeline from '../components/molecules/Pipeline';
 
 const TheHub = () => {
     return (
-        <div className={cn('flex h-full flex-col gap-4 overflow-auto p-1')}>
+        <div className='flex h-full flex-col gap-4 overflow-auto p-1'>
             <header>
-                <h1 className={cn('text-2xl font-semibold')}>The Hub</h1>
-                <p className={cn('text-foreground/70')}>Basic input to output flow component with animated conveyor belt.</p>
+                <h1 className='text-2xl font-semibold'>The Hub</h1>
+                <p className='text-foreground/70'>Basic input to output flow component with animated conveyor belt.</p>
             </header>
 
-            <div className={cn('grid gap-4')}>
-                <InputOutputLane input='Originium Slag' output='Pure Originium' quantity={6} />
-                <InputOutputLane input='Raw Ore' output='Refined Alloy' quantity={3} />
-                <InputOutputLane input='Coolant' output='Power Cell' quantity={2} />
+            <div className='grid gap-4'>
+                <Pipeline input='Originium Slag' output='Pure Originium' quantity={6} />
             </div>
         </div>
     );

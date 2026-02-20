@@ -1,11 +1,11 @@
-@import 'tailwindcss';
-@import '@heroui/styles';
+@import "tailwindcss";
+@import "@heroui/styles";
 
 :root,
 .light,
 .default,
-[data-theme='light'],
-[data-theme='default'] {
+[data-theme="light"],
+[data-theme="default"] {
     /* Theme Colors (Light Mode) */
     --accent: oklch(96.17% 0.2009 109.04);
     --accent-foreground: oklch(15% 0.03 109.04);
@@ -48,7 +48,7 @@
 }
 
 .dark,
-[data-theme='dark'] {
+[data-theme="dark"] {
     color-scheme: dark;
     /* Theme Colors (Dark Mode) */
     --accent: oklch(96.17% 0.2009 109.04);
@@ -121,5 +121,5 @@
 }
 
 .conveyor-sweep {
-    animation: conveyor-sweep 1.35s linear infinite;
+    animation: conveyor-sweep 1.55s linear infinite;
 }

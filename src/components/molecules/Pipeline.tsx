@@ -2,8 +2,9 @@ import { useEffect, useState } from 'react';
 import MaterialCard from '../atoms/MaterialCard';
 import ConveyorBelt from '../atoms/ConveyorBelt';
 import { cn } from '../../lib/utils';
+import { itemDetails } from '../../constants/itemDetails';
 
-type InputOutputLaneProps = {
+type PipelineProps = {
     input: string;
     output: string;
     quantity?: number;
@@ -13,7 +14,7 @@ const MIN_QUANTITY = 1;
 
 const clampQuantity = (value: number) => Math.max(MIN_QUANTITY, value);
 
-const InputOutputLane = ({ input, output, quantity = MIN_QUANTITY }: InputOutputLaneProps) => {
+const Pipeline = ({ input, output, quantity = MIN_QUANTITY }: PipelineProps) => {
     const [currentQuantity, setCurrentQuantity] = useState(clampQuantity(quantity));
 
     useEffect(() => {
@@ -27,9 +28,9 @@ const InputOutputLane = ({ input, output, quantity = MIN_QUANTITY }: InputOutput
                     'inline-flex w-fit max-w-full items-center overflow-x-auto rounded-4xl border border-border/70 bg-surface/80 px-5 py-4'
                 )}
             >
-                <MaterialCard className={cn('z-20 w-24 shrink-0')} label={input} />
+                <MaterialCard item={itemDetails[0]} />
                 <ConveyorBelt className={cn('-mx-7 h-18 w-72 shrink-0')} />
-                <MaterialCard className={cn('z-20 w-24 shrink-0')} label={output} />
+                <MaterialCard item={itemDetails[1]} className={cn('z-20 w-24 shrink-0')} />
             </div>
 
             <div
@@ -46,8 +47,8 @@ const InputOutputLane = ({ input, output, quantity = MIN_QUANTITY }: InputOutput
                         'min-h-0 flex flex-1 items-center justify-center rounded-none border-0 px-0',
                         'text-lg font-semibold leading-none text-foreground select-none transition-colors',
                         'focus-visible:outline-none',
-                        'hover:!bg-accent hover:!text-accent-foreground',
-                        'active:!bg-accent/90 active:!text-accent-foreground'
+                        'hover:bg-accent! hover:text-accent-foreground!',
+                        'active:bg-accent/90! active:text-accent-foreground!'
                     )}
                     onClick={() => setCurrentQuantity((value) => value + 1)}
                 >
@@ -69,8 +70,8 @@ const InputOutputLane = ({ input, output, quantity = MIN_QUANTITY }: InputOutput
                         'min-h-0 flex flex-1 items-center justify-center rounded-none border-0 px-0',
                         'text-lg font-semibold leading-none text-foreground select-none transition-colors',
                         'focus-visible:outline-none',
-                        'hover:!bg-accent hover:!text-accent-foreground',
-                        'active:!bg-accent/90 active:!text-accent-foreground'
+                        'hover:bg-accent! hover:text-accent-foreground!',
+                        'active:bg-accent/90! active:text-accent-foreground!'
                     )}
                     onClick={() => setCurrentQuantity((value) => Math.max(MIN_QUANTITY, value - 1))}
                 >
@@ -81,4 +82,4 @@ const InputOutputLane = ({ input, output, quantity = MIN_QUANTITY }: InputOutput
     );
 };
 
-export default InputOutputLane;
+export default Pipeline;

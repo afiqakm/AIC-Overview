@@ -8,7 +8,19 @@ type ConveyorBeltProps = {
 const ConveyorBelt = ({ className }: ConveyorBeltProps) => {
     const clipId = useId();
     const shimmerId = useId();
-    const laneTriangleXs = [48, 70, 92, 114, 136, 158, 180, 202, 224, 246, 268];
+    const laneTriangleXs = [
+        48,
+        // 70,
+        92,
+        // 114,
+        136,
+        // 158,
+        180,
+        // 202,
+        224,
+        // 246,
+        268
+    ];
 
     return (
         <svg
