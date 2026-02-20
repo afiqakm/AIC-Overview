@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import MaterialCard from '../atoms/MaterialCard';
+
+import MaterialCard from '../atoms/ItemCard';
 import ConveyorBelt from '../atoms/ConveyorBelt';
 import { cn } from '../../lib/utils';
 import { itemDetails } from '../../constants/itemDetails';
@@ -25,18 +26,21 @@ const Pipeline = ({ input, output, quantity = MIN_QUANTITY }: PipelineProps) => 
         <div className={cn('inline-flex w-fit max-w-full items-stretch gap-3')}>
             <div
                 className={cn(
-                    'inline-flex w-fit max-w-full items-center overflow-x-auto rounded-4xl border border-border/70 bg-surface/80 px-5 py-4'
+                    'inline-flex w-fit max-w-full items-center overflow-x-auto rounded-4xl border border-border/70 bg-surface/80 px-5 py-4',
                 )}
             >
                 <MaterialCard item={itemDetails[0]} />
-                <ConveyorBelt className={cn('-mx-7 h-18 w-72 shrink-0')} />
+                <div>
+                    <ConveyorBelt className={cn('-mx-7 h-18 w-72 shrink-0')} />
+                    <p className='text-foreground/70 text-center'>30/min</p>
+                </div>
                 <MaterialCard item={itemDetails[1]} className={cn('z-20 w-24 shrink-0')} />
             </div>
 
             <div
                 aria-label='Quantity'
                 className={cn(
-                    'flex min-w-14 shrink-0 flex-col overflow-hidden rounded-3xl border border-border/70 bg-surface/80'
+                    'flex min-w-14 shrink-0 flex-col overflow-hidden rounded-3xl border border-border/70 bg-surface/80',
                 )}
             >
                 <button
@@ -48,7 +52,7 @@ const Pipeline = ({ input, output, quantity = MIN_QUANTITY }: PipelineProps) => 
                         'text-lg font-semibold leading-none text-foreground select-none transition-colors',
                         'focus-visible:outline-none',
                         'hover:bg-accent! hover:text-accent-foreground!',
-                        'active:bg-accent/90! active:text-accent-foreground!'
+                        'active:bg-accent/90! active:text-accent-foreground!',
                     )}
                     onClick={() => setCurrentQuantity((value) => value + 1)}
                 >
@@ -57,7 +61,7 @@ const Pipeline = ({ input, output, quantity = MIN_QUANTITY }: PipelineProps) => 
                 <div
                     className={cn(
                         'flex min-h-0 flex-1 items-center justify-center',
-                        'border-y border-border/70 bg-surface px-2 text-center text-xl font-semibold tabular-nums'
+                        'border-y border-border/70 bg-surface px-2 text-center text-xl font-semibold tabular-nums',
                     )}
                 >
                     {currentQuantity}
@@ -71,7 +75,7 @@ const Pipeline = ({ input, output, quantity = MIN_QUANTITY }: PipelineProps) => 
                         'text-lg font-semibold leading-none text-foreground select-none transition-colors',
                         'focus-visible:outline-none',
                         'hover:bg-accent! hover:text-accent-foreground!',
-                        'active:bg-accent/90! active:text-accent-foreground!'
+                        'active:bg-accent/90! active:text-accent-foreground!',
                     )}
                     onClick={() => setCurrentQuantity((value) => Math.max(MIN_QUANTITY, value - 1))}
                 >
