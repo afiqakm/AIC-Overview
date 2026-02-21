@@ -41,7 +41,7 @@ const ItemCard: React.FC<ItemCardProps> = ({
                 return (
                     <div
                         aria-hidden='true'
-                        className='pointer-events-none absolute inset-x-0 top-0 h-6 bg-linear-to-b from-accent/12 to-transparent'
+                        className='pointer-events-none absolute inset-x-0 top-0 h-full bg-linear-to-b from-accent/90 to-transparent'
                     />
                 );
             }
@@ -60,7 +60,7 @@ const ItemCard: React.FC<ItemCardProps> = ({
         <Card
             {...props}
             className={cn(
-                'group relative aspect-square w-24 overflow-hidden rounded-3xl border',
+                'group relative aspect-square w-24 min-w-24 shrink-0 overflow-hidden rounded-3xl border',
                 borderStyle,
                 'bg-linear-to-b from-zinc-900 via-zinc-900 to-zinc-950 p-2',
                 'shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_14px_24px_rgba(0,0,0,0.45)]',
