@@ -3,7 +3,7 @@ import { useState } from 'react';
 import Pipeline from '../components/molecules/Pipeline';
 import type { TPipeline } from '../types/item';
 
-import AddPipelineModal from './components/addPipelineModal';
+import AddPipelineModal from './components/AddPipelineModal';
 
 const TheHub = () => {
     const [pipelineData, setPipelineData] = useState<TPipeline[]>([]);

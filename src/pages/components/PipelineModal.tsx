@@ -78,17 +78,6 @@ const AddPipelineModal = ({ onSave }: AddPipelineModalProps) => {
         [outputSearch],
     );
 
-    console.log('filterInputItems', filteredInputItems);
-
-    // useEffect(() => {
-    //     if (inputSearch === '') {
-    //         set
-    //     }
-    //     if (outputSearch === '') {
-    //         setSelectedOutputId(null);
-    //     }
-    // }, [inputSearch, outputSearch]);
-
     const HandleCloseAddPipeline = () => {
         addPipelineModal.close();
         setSelectedInputId(null);
@@ -105,8 +94,6 @@ const AddPipelineModal = ({ onSave }: AddPipelineModalProps) => {
     };
 
     const HandleInputSearchChange = (value: string) => {
-        console.log('value', value);
-
         setInputSearch(value);
     };
 
