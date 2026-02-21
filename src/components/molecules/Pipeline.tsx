@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
 
-import MaterialCard from '../atoms/ItemCard';
-import ConveyorBelt from '../atoms/ConveyorBelt';
-import { cn } from '../../lib/utils';
 import { itemDetails } from '../../constants/itemDetails';
+import { cn } from '../../lib/utils';
+import ConveyorBelt from '../atoms/ConveyorBelt';
+import MaterialCard from '../atoms/ItemCard';
 
-type PipelineProps = {
+type PipelineProps = React.HTMLAttributes<HTMLDivElement> & {
     input: string;
     output: string;
     quantity?: number;
@@ -15,26 +15,35 @@ const MIN_QUANTITY = 1;
 
 const clampQuantity = (value: number) => Math.max(MIN_QUANTITY, value);
 
-const Pipeline = ({ input, output, quantity = MIN_QUANTITY }: PipelineProps) => {
+const Pipeline = ({ input, output, quantity = MIN_QUANTITY, ...props }: PipelineProps) => {
     const [currentQuantity, setCurrentQuantity] = useState(clampQuantity(quantity));
+    const inputItem = itemDetails.find((item) => item.id === input);
+    const outputItem = itemDetails.find((item) => item.id === output);
 
     useEffect(() => {
         setCurrentQuantity(clampQuantity(quantity));
     }, [quantity]);
 
+    if (!inputItem || !outputItem) {
+        return null;
+    }
+
     return (
-        <div className={cn('inline-flex w-fit max-w-full items-stretch gap-3')}>
+        <div
+            {...props}
+            className={cn('inline-flex w-fit max-w-full items-stretch gap-3', props.className)}
+        >
             <div
                 className={cn(
                     'inline-flex w-fit max-w-full items-center overflow-x-auto rounded-4xl border border-border/70 bg-surface/80 px-5 py-4',
                 )}
             >
-                <MaterialCard item={itemDetails[0]} />
+                <MaterialCard item={inputItem} />
                 <div>
                     <ConveyorBelt className={cn('-mx-7 h-18 w-72 shrink-0')} />
                     <p className='text-foreground/70 text-center'>30/min</p>
                 </div>
-                <MaterialCard item={itemDetails[1]} className={cn('z-20 w-24 shrink-0')} />
+                <MaterialCard item={outputItem} className={cn('z-20 w-24 shrink-0')} />
             </div>
 
             <div
